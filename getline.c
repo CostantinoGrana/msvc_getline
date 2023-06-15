@@ -46,7 +46,7 @@ ssize_t getdelim(char **restrict lineptr, size_t *restrict n, int delim, FILE *r
         if (c == EOF) {
             break;
         }
-        if (nread >= *n - 1) {
+        if (nread >= (ssize_t)(*n - 1)) {
             size_t newn = *n * 2;
             char *newptr = realloc(*lineptr, newn);
             if (newptr == NULL) {
